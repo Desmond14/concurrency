@@ -21,7 +21,4 @@ public class BadSemaphore {
 		notify();
 	}
 	
-	public synchronized void changeConditions() {
-		acquired = false;
-	}
 }
