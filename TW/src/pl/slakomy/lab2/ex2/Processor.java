@@ -32,10 +32,11 @@ public class Processor implements Runnable {
 	}
 	
 	public void processNextPortion() throws InterruptedException{
-		TimeUnit.SECONDS.sleep(500 + rand.nextInt(500));
-		currentPortion = (currentPortion + 1) % Pipelining.BUFFER_SIZE;
-		System.out.format("Processor no %d processed portion no %d",
+		TimeUnit.MILLISECONDS.sleep(500 + rand.nextInt(500));
+		System.out.format("Processor no %d processed portion no %d\n",
 				id, currentPortion);
+		currentPortion = (currentPortion + 1) % Pipelining.BUFFER_SIZE;
+		
 	}
 
 }
