@@ -6,9 +6,12 @@ import java.util.concurrent.TimeUnit;
 
 public class Processor implements Runnable {
 	
+	private static int counter = 0;
+	private int id = counter++;
 	private static Random rand = new Random();
 	private Semaphore current;
 	private Semaphore next;
+	private int currentPortion = 0;
 	
 	public Processor(Semaphore current, Semaphore next) {
 		this.current = current;
@@ -29,7 +32,10 @@ public class Processor implements Runnable {
 	}
 	
 	public void processNextPortion() throws InterruptedException{
-		TimeUnit.SECONDS.sleep(rand.nextInt(1000));
+		TimeUnit.SECONDS.sleep(500 + rand.nextInt(500));
+		currentPortion = (currentPortion + 1) % Pipelining.BUFFER_SIZE;
+		System.out.format("Processor no %d processed portion no %d",
+				id, currentPortion);
 	}
 
 }

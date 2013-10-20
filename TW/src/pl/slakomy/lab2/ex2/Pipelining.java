@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class Pipelining {
 
 	private final static int NUMBER_OF_PROCESSES = 5;
-	private final static int BUFFER_SIZE = 7;
+	final static int BUFFER_SIZE = 7;
 	private static Semaphore[] semaphores = new Semaphore[NUMBER_OF_PROCESSES];
 	
 	public static void main(String[] args) throws InterruptedException {
